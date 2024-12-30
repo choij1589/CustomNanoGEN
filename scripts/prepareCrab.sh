@@ -1,0 +1,75 @@
+#!/bin/bash
+
+MASSPOINTs=(
+    MHc70_MA15 MHc70_MA20 MHc70_MA25 MHc70_MA30 MHc70_MA35 MHc70_MA40 MHc70_MA45
+    MHc70_MA50 MHc70_MA55 MHc70_MA60 MHc70_MA65 MHc85_MA15 MHc85_MA20 MHc85_MA25
+    MHc85_MA30 MHc85_MA35 MHc85_MA40 MHc85_MA47 MHc85_MA55 MHc85_MA62 MHc85_MA70
+    MHc85_MA80 MHc100_MA15 MHc100_MA20 MHc100_MA25 MHc100_MA30 MHc100_MA35
+    MHc100_MA40 MHc100_MA47 MHc100_MA55 MHc100_MA62 MHc100_MA70 MHc100_MA77
+    MHc100_MA85 MHc100_MA87 MHc100_MA89 MHc100_MA90 MHc100_MA91 MHc100_MA93
+    MHc100_MA95 MHc115_MA15 MHc115_MA20 MHc115_MA25 MHc115_MA30 MHc115_MA35
+    MHc115_MA40 MHc115_MA47 MHc115_MA55 MHc115_MA62 MHc115_MA70 MHc115_MA77
+    MHc115_MA85 MHc115_MA87 MHc115_MA89 MHc115_MA90 MHc115_MA91 MHc115_MA93
+    MHc115_MA95 MHc115_MA102 MHc115_MA110 MHc130_MA15 MHc130_MA20 MHc130_MA25
+    MHc130_MA30 MHc130_MA35 MHc130_MA40 MHc130_MA47 MHc130_MA55 MHc130_MA62
+    MHc130_MA70 MHc130_MA77 MHc130_MA85 MHc130_MA87 MHc130_MA89 MHc130_MA90
+    MHc130_MA91 MHc130_MA93 MHc130_MA95 MHc130_MA105 MHc130_MA115 MHc130_MA125
+    MHc145_MA15 MHc145_MA20 MHc145_MA25 MHc145_MA30 MHc145_MA35 MHc145_MA40
+    MHc145_MA47 MHc145_MA55 MHc145_MA62 MHc145_MA70 MHc145_MA77 MHc145_MA85
+    MHc145_MA87 MHc145_MA89 MHc145_MA90 MHc145_MA91 MHc145_MA93 MHc145_MA95
+    MHc145_MA103 MHc145_MA111 MHc145_MA120 MHc145_MA130 MHc145_MA140 MHc160_MA15
+    MHc160_MA20 MHc160_MA25 MHc160_MA30 MHc160_MA35 MHc160_MA40 MHc160_MA47
+    MHc160_MA55 MHc160_MA62 MHc160_MA70 MHc160_MA77 MHc160_MA85 MHc160_MA87
+    MHc160_MA89 MHc160_MA90 MHc160_MA91 MHc160_MA93 MHc160_MA95 MHc160_MA106
+    MHc160_MA117 MHc160_MA128 MHc160_MA139 MHc160_MA147 MHc160_MA155
+)
+COM="13TeV"
+
+BASIC_FRAGMENT="templates/Hadronizer_TuneCP5_${COM}_TTToHcToWAToMuMu_MultiLepFilter_LHE_pythia8_cff.py"
+BASIC_CRAB_CONFIG="templates/submit.py"
+
+# Function to generate files for a given MASSPOINT
+parseFiles() {
+    local MASSPOINT=$1
+
+    # Paths for output files
+    FRAGMENT="python/Hadronizer_TuneCP5_${COM}_TTToHcToWAToMuMu_${MASSPOINT}_MultiLepFilter_LHE_pythia8_cff.py"
+    CRAB_CONFIG="crab/$COM/SUBMIT_${MASSPOINT}.py"
+
+    # Generate the fragment
+    mkdir -p python
+    [[ -f $FRAGMENT ]] && rm $FRAGMENT
+    sed "s/\[MASSPOINT\]/${MASSPOINT}/g" "$BASIC_FRAGMENT" > "$FRAGMENT"
+
+    # Generate the crab config
+    mkdir -p "crab/$COM"
+    [[ -f $CRAB_CONFIG ]] && rm $CRAB_CONFIG
+    sed "s/\[MASSPOINT\]/${MASSPOINT}/g" "$BASIC_CRAB_CONFIG" > "$CRAB_CONFIG"
+}
+
+# Function to run cmsDriver for a given MASSPOINT
+runCmsDriverNanoGen() {
+    local MASSPOINT=$1
+    FRAGMENT="python/Hadronizer_TuneCP5_${COM}_TTToHcToWAToMuMu_${MASSPOINT}_MultiLepFilter_LHE_pythia8_cff.py"
+
+    # Run cmsDriver
+    ./scripts/runCmsDriverNanoGen.sh "$FRAGMENT"
+
+    echo "cmsDriver completed for MASSPOINT: $MASSPOINT"
+}
+
+# Export variables and functions for subshells
+export BASIC_FRAGMENT BASIC_CRAB_CONFIG COM
+export -f parseFiles runCmsDriverNanoGen
+
+# Generate files using xargs
+printf "%s\n" "${MASSPOINTs[@]}" | xargs -I {} -P 4 bash -c 'parseFiles "$@"' _ {}
+
+# Perform scram build
+cd $CMSSW_BASE/src
+scramv1 b clean
+scramv1 b -j 4
+cd -
+
+# Run cmsDriver using xargs
+printf "%s\n" "${MASSPOINTs[@]}" | xargs -I {} -P 4 bash -c 'runCmsDriverNanoGen "$@"' _ {}
