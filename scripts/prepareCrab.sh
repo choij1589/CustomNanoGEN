@@ -23,10 +23,10 @@ MASSPOINTs=(
     MHc160_MA89 MHc160_MA90 MHc160_MA91 MHc160_MA93 MHc160_MA95 MHc160_MA106
     MHc160_MA117 MHc160_MA128 MHc160_MA139 MHc160_MA147 MHc160_MA155
 )
-COM="13TeV"
+COM="13p6TeV"
 
 BASIC_FRAGMENT="templates/Hadronizer_TuneCP5_${COM}_TTToHcToWAToMuMu_MultiLepFilter_LHE_pythia8_cff.py"
-BASIC_CRAB_CONFIG="templates/submit.py"
+BASIC_CRAB_CONFIG="templates/submit_${COM}.py"
 
 # Function to generate files for a given MASSPOINT
 parseFiles() {
