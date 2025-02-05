@@ -1,8 +1,14 @@
 #!/bin/bash
 fragment=${1/python\//}
+nevt=$2
+SEED=$(($(date +%s) % 100 + 1))
 
-cmsDriver.py Configuration/CustomNanoGEN/python/$fragment --no_exec -n 30 \
-    --fileout file:NANOGEN.root --mc --eventcontent NANOAODGEN \
-    --datatier NANOAOD --conditions auto:mc --step LHE,GEN,NANOGEN \
-    --customise Configuration/DataProcessing/Utils.addMonitoring \
-    --python_filename configs/${fragment/cff/cfg}
+# Run3
+cmsDriver.py Configuration/CustomNanoGEN/python/$fragment --python_filename configs/${fragment/cff/cfg} \
+    --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring \
+    --datatier NANOAOD --fileout file:NANOGEN.root --conditions 130X_mcRun3_2023_realistic_v14 \
+    --beamspot Realistic25ns13p6TeVEarly2023Collision \
+    --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed="int(${SEED})" \
+                         process.source.numberEventsInLuminosityBlock="cms.untracked.uint32(243)" \
+    --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3_2023 \
+    --no_exec --mc -n $nevt || exit $?;
