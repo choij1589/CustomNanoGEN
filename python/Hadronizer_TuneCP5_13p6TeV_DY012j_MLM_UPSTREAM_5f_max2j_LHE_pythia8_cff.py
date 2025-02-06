@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 externalLHEProducer = cms.EDProducer('ExternalLHEProducer',
-    args = cms.vstring("root://eosuser.cern.ch//eos/user/c/choij/MG4GPU/gridpacks/DY3j_LO_5f_CPPNONE_el8_amd64_gcc12_CMSSW_14_0_9_tarball.tar.xz"),
+    args = cms.vstring("root://eosuser.cern.ch//eos/user/c/choij/MG4GPU/gridpacks/DY012j_LO_5f_UPSTREAM_el8_amd64_gcc12_CMSSW_14_0_9_tarball.tar.xz"),
     nEvents = cms.untracked.uint32(5000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
@@ -29,7 +29,7 @@ generator = cms.EDFilter("Pythia8ConcurrentHadronizerFilter",
             'JetMatching:doShowerKt = off', 
             'JetMatching:qCut = 19.',
             'JetMatching:nQmatch = 5',
-            'JetMatching:nJetMax = 3',
+            'JetMatching:nJetMax = 2',
             'TimeShower:mMaxGamma = 4.0'
         ),
         parameterSets = cms.vstring(

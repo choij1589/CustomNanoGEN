@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/CustomNanoGEN/python/Hadronizer_TuneCP5_13p6TeV_DY012j_MLM_CPPNONE_5f_max2j_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY012j_MLM_CPPNONE_5f_max2j_LHE_pythia8_cfg.py --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAOD --fileout file:NANOGEN.root --conditions 130X_mcRun3_2023_realistic_v14 --beamspot Realistic25ns13p6TeVEarly2023Collision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(28) process.source.numberEventsInLuminosityBlock=cms.untracked.uint32(243) --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3_2023 --no_exec --mc -n 50000
+# with command line options: Configuration/CustomNanoGEN/python/Hadronizer_TuneCP5_13p6TeV_DY012j_MLM_CPPNONE_5f_max2j_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY012j_MLM_CPPNONE_5f_max2j_LHE_pythia8_cfg.py --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAOD --fileout file:NANOGEN.root --conditions 130X_mcRun3_2023_realistic_v14 --beamspot Realistic25ns13p6TeVEarly2023Collision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(20) process.source.numberEventsInLuminosityBlock=cms.untracked.uint32(243) --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3_2023 --no_exec --mc -n 50000
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Run3_2023_cff import Run3_2023
@@ -168,7 +168,7 @@ process.generator = cms.EDFilter("Pythia8ConcurrentHadronizerFilter",
 
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/MG4GPU/gridpacks/DY012j_LO_5f_CPPNONE_el9_amd64_gcc12_CMSSW_14_0_9_tarball.tar.xz'),
+    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/MG4GPU/gridpacks/DY012j_LO_5f_CPPNONE_el8_amd64_gcc12_CMSSW_14_0_9_tarball.tar.xz'),
     generateConcurrently = cms.untracked.bool(False),
     nEvents = cms.untracked.uint32(50000),
     numberOfParameters = cms.uint32(1),
@@ -213,7 +213,7 @@ process = addMonitoring(process)
 
 # Customisation from command line
 
-process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(28)
+process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(20)
 # Add early deletion of temporary data products to reduce peak memory need
 from Configuration.StandardSequences.earlyDeleteSettings_cff import customiseEarlyDelete
 process = customiseEarlyDelete(process)
