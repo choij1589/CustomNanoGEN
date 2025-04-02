@@ -1,27 +1,24 @@
 #!/bin/bash
-set -euo pipefail
-
-PROCESS_LIST=("DY012j" "DY3j")
-BACKEND_LIST=("UPSTREAM" "FORTRAN" "CPPNONE" "CPPAVX2" "CUDA")
+PROCESS_LIST=("DY0j_LO_5f" "DY1j_LO_5f" "DY2j_LO_5f" "DY3j_LO_5f"
+              "W0j_LO_5f" "W1j_LO_5f" "W2j_LO_5f" "W3j_LO_5f")
+BACKEND_LIST=("UPSTREAM" "LEGACY" "FORTRAN" "CPPNONE" "CPPAVX2")
 
 for proc in "${PROCESS_LIST[@]}"; do
   for backend in "${BACKEND_LIST[@]}"; do
-    echo "$proc $backend"
+    ./scripts/makeFragments.sh $proc $backend
   done
-done | xargs -n2 -P8 bash -c '
-  # Using "_" as a dummy $0; $1 is process, $2 is backend
-  proc="$1"
-  backend="$2"
-  workdir="cmsRun/${proc}_${backend}"
-  echo "Starting: $proc with $backend in $workdir"
-  mkdir -p "$workdir"
-  cd "$workdir" || { echo "Failed to cd into $workdir"; exit 1; }
-  # Copy the config file(s) matching the pattern. Adjust the glob as needed.
-  cp ../../configs/Hadronizer_TuneCP5_13p6TeV_${proc}_MLM_${backend}_5f_*_LHE_pythia8_cfg.py .
-  # Run the cms job and append output to log.txt
-  cmsRun Hadronizer_*.py >> log.txt 2>&1
-  echo "Finished: $proc with $backend"
-' _
+done
 
+scram b clean; scram b -j 8
 
+for proc in "${PROCESS_LIST[@]}"; do
+  for backend in "${BACKEND_LIST[@]}"; do
+    ./scripts/runCmsDriverNanoGen.sh python/Hadronizer_TuneCP5_13p6TeV_${proc}_${backend}_LHE_pythia8_cff.py 5000
+  done
+done
 
+for proc in "${PROCESS_LIST[@]}"; do
+  for backend in "${BACKEND_LIST[@]}"; do
+    ./scripts/makeCrabConfig.sh $proc $backend
+  done
+done

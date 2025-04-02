@@ -1,0 +1,182 @@
+DEBUG 2025-04-02 08:32:04.058 UTC: 	 CRAB Client version: v3.250318
+DEBUG 2025-04-02 08:32:04.058 UTC: 	 Running on: Linux private-snu 6.13.8-200.fc41.x86_64 #1 SMP PREEMPT_DYNAMIC Sun Mar 23 05:03:09 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-04-02 08:32:04.058 UTC: 	 Using SINGULARITY image: private-el8.sif
+DEBUG 2025-04-02 08:32:04.058 UTC: 	 Operating System: AlmaLinux 8.10 (Cerulean Leopard)
+DEBUG 2025-04-02 08:32:04.058 UTC: 	 Executing command: 'submit'
+DEBUG 2025-04-02 08:32:04.058 UTC: 	 Found CRAB cache file /home/choij/.crab3
+INFO 2025-04-02 08:32:04.059 UTC: 	 Will use CRAB configuration file crab_config_W0j_LO_5f_FORTRAN.py
+DEBUG 2025-04-02 08:32:04.059 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-04-02 08:32:05.721 UTC: 	 Will use CRAB plugin PRIVATEMC (i.e. will run an a MC generation job type).
+DEBUG 2025-04-02 08:32:05.722 UTC: 	 Checking credentials
+DEBUG 2025-04-02 08:32:05.722 UTC: 	 Found proxy file /tmp/x509up_u1000
+DEBUG 2025-04-02 08:32:05.722 UTC: 	 Making sure it has proper VOMS extension
+DEBUG 2025-04-02 08:32:05.722 UTC: 	 Executing command :
+ voms-proxy-info --vo --file /tmp/x509up_u1000
+DEBUG 2025-04-02 08:32:06.047 UTC: 	 output : cms
+
+ error: 
+ retcode : 0
+DEBUG 2025-04-02 08:32:06.047 UTC: 	 Getting proxy life time left
+DEBUG 2025-04-02 08:32:06.047 UTC: 	 Executing command :
+ voms-proxy-info --actimeleft --timeleft --file /tmp/x509up_u1000
+DEBUG 2025-04-02 08:32:06.373 UTC: 	 output : 593943
+593943
+
+ error: 
+ retcode : 0
+DEBUG 2025-04-02 08:32:06.374 UTC: 	 Proxy valid for 164:59:03 hours
+DEBUG 2025-04-02 08:32:06.374 UTC: 	 Encoded data for curl request: subresource=delegatedn
+DEBUG 2025-04-02 08:32:07.194 UTC: 	 Registering user credentials on myproxy for /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+DEBUG 2025-04-02 08:32:07.194 UTC: 	 Executing command :
+ voms-proxy-info --identity --file /tmp/x509up_u1000
+DEBUG 2025-04-02 08:32:07.524 UTC: 	 output : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=choij/CN=841389/CN=Jin Choi
+
+ error: 
+ retcode : 0
+DEBUG 2025-04-02 08:32:07.524 UTC: 	 Getting myproxy life time left for 62145c27448958522230f1583fedca774537a25d
+DEBUG 2025-04-02 08:32:07.524 UTC: 	 Executing command :
+ myproxy-info -s myproxy.cern.ch -l 62145c27448958522230f1583fedca774537a25d
+DEBUG 2025-04-02 08:32:09.138 UTC: 	 output : username: 62145c27448958522230f1583fedca774537a25d
+owner: /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=choij/CN=841389/CN=Jin Choi
+  renewal policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  trusted retrieval policy: /DC=ch/DC=cern/OU=computers/CN=crab-(preprod|prod)-tw(01|02).cern.ch|/DC=ch/DC=cern/OU=computers/CN=crab-dev-tw(01|02|03|04).cern.ch|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=cmscrab/CN=(817881|373708)/CN=Robot: cms crab|/DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=crabint1/CN=373708/CN=Robot: CMS CRAB Integration 1
+  timeleft: 524:43:55  (21.9 days)
+
+ error: 
+ retcode : 0
+DEBUG 2025-04-02 08:32:09.138 UTC: 	 Myproxy is valid: 1888980
+DEBUG 2025-04-02 08:32:09.138 UTC: 	 Result of myproxy credential check:
+  Credential exists on myproxy: username: 62145c27448958522230f1583fedca774537a25d  - validity: 21 days, 20:43:00
+DEBUG 2025-04-02 08:32:09.138 UTC: 	 Command use: submit
+DEBUG 2025-04-02 08:32:09.138 UTC: 	 Options use: ['-c', 'crab_config_W0j_LO_5f_FORTRAN.py']
+DEBUG 2025-04-02 08:32:09.138 UTC: 	 Encoded data for curl request: subresource=version
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 CRABClient version: v3.250318
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 Instance is prod
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 Server base url is cmsweb.cern.ch
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 Command api workflow
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 Started submission
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 Working on /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN
+DEBUG 2025-04-02 08:34:24.357 UTC: 	 Encoded data for curl request: subresource=backendurls
+DEBUG 2025-04-02 08:34:25.192 UTC: 	 Loading required information from the environment
+DEBUG 2025-04-02 08:34:25.192 UTC: 	 Found CMSSW_13_0_13 for el8_amd64_gcc11 with base /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13
+DEBUG 2025-04-02 08:34:25.192 UTC: 	 UNIQUE NAME: tarUUID 42c5a86a-d7c6-4433-924c-8adcc1c89308 
+DEBUG 2025-04-02 08:34:25.193 UTC: 	 self.config: from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = 'crab_projects'
+config.General.requestName = 'W0j_LO_5f_FORTRAN'
+config.General.transferOutputs = True
+config.General.transferLogs = False
+config.section_('JobType')
+config.JobType.numCores = 1
+config.JobType.psetName = '../configs/Hadronizer_TuneCP5_13p6TeV_W0j_LO_5f_FORTRAN_LHE_pythia8_cfg.py'
+config.JobType.allowUndistributedCMSSW = False
+config.JobType.pluginName = 'PrivateMC'
+config.section_('Data')
+config.Data.publication = False
+config.Data.outputDatasetTag = 'Run3Summer23wmLHEGS'
+config.Data.outLFNDirBase = '/store/user/choij/CustomNanoGEN'
+config.Data.unitsPerJob = 5000
+config.Data.totalUnits = 200000
+config.Data.splitting = 'EventBased'
+config.Data.outputPrimaryDataset = 'Validation'
+config.section_('Site')
+config.Site.storageSite = 'T3_KR_KNU'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2025-04-02 08:34:25.193 UTC: 	 self.config.JobType.psetName: ../configs/Hadronizer_TuneCP5_13p6TeV_W0j_LO_5f_FORTRAN_LHE_pythia8_cfg.py
+INFO 2025-04-02 08:34:25.193 UTC: 	 Importing CMSSW configuration ../configs/Hadronizer_TuneCP5_13p6TeV_W0j_LO_5f_FORTRAN_LHE_pythia8_cfg.py
+INFO 2025-04-02 08:34:25.867 UTC: 	 Finished importing CMSSW configuration ../configs/Hadronizer_TuneCP5_13p6TeV_W0j_LO_5f_FORTRAN_LHE_pythia8_cfg.py
+DEBUG 2025-04-02 08:34:25.868 UTC: 	 Writing CMSSW configuration to /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/PSet.py
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 The following EDM output files will be collected: ['NANOGEN.root']
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 The following TFile output files will be collected: []
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 The following user output files (not listed as PoolOuputModule or TFileService in the CMSSW PSet) will be collected: 
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 Loading required information from the environment
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 Found CMSSW_13_0_13 for el8_amd64_gcc11 with base /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 Making tarball in /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/42c5a86a-d7c6-4433-924c-8adcc1c89308default.tgz
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/bin
+DEBUG 2025-04-02 08:34:25.969 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/bin to tarball
+DEBUG 2025-04-02 08:34:25.971 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/python
+DEBUG 2025-04-02 08:34:25.971 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/python to tarball
+DEBUG 2025-04-02 08:34:25.973 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/cfipython
+DEBUG 2025-04-02 08:34:25.973 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/cfipython to tarball
+DEBUG 2025-04-02 08:34:25.974 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/lib
+DEBUG 2025-04-02 08:34:25.974 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/lib to tarball
+DEBUG 2025-04-02 08:34:25.974 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/biglib
+DEBUG 2025-04-02 08:34:25.974 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/biglib to tarball
+DEBUG 2025-04-02 08:34:25.975 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/module
+DEBUG 2025-04-02 08:34:25.975 UTC: 	 Checking directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/config/SCRAM/hooks
+DEBUG 2025-04-02 08:34:25.975 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/config/SCRAM/hooks to tarball
+DEBUG 2025-04-02 08:34:25.980 UTC: 	 Adding directory /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/python to tarball
+DEBUG 2025-04-02 08:34:26.128 UTC: 	 Uploading archive /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/42c5a86a-d7c6-4433-924c-8adcc1c89308default.tgz (198 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/S3/crabcache_prod
+DEBUG 2025-04-02 08:34:26.218 UTC: 	 Encoded data for curl request: subresource=upload&objecttype=sandbox&tarballname=e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz
+DEBUG 2025-04-02 08:34:27.100 UTC: 	 Will execute:
+curl -f -v -X POST  -H "User-Agent: CRAB" -F "key=choij/sandboxes/e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz" -F "AWSAccessKeyId=715203df6482458ba839e73e6dab634b" -F "policy=eyJleHBpcmF0aW9uIjogIjIwMjUtMDQtMDJUMDk6MzQ6MjZaIiwgImNvbmRpdGlvbnMiOiBbeyJidWNrZXQiOiAiY3JhYmNhY2hlX3Byb2QifSwgeyJrZXkiOiAiY2hvaWovc2FuZGJveGVzL2U5Y2IwYjMwMjg5ODM4OWE3NzkwZjJjMTJlZjM2MGVmNDhiYjUyYjQ3NWNjZmJiNTAxYTllNzc5M2UzMjE3YWUudGFyLmd6In1dfQ==" -F "signature=K4rSChopJlGT/jw/i8x8PdzeHU4=" -F "file=@/home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/42c5a86a-d7c6-4433-924c-8adcc1c89308default.tgz" "https://s3.cern.ch/crabcache_prod"
+DEBUG 2025-04-02 08:34:28.947 UTC: 	 exitcode: 0
+stdout: b''
+DEBUG 2025-04-02 08:34:28.947 UTC: 	 upload to S3 of sandbox /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/42c5a86a-d7c6-4433-924c-8adcc1c89308default.tgz completed
+DEBUG 2025-04-02 08:34:28.947 UTC: 	 make sure that object is ready for retrieve
+DEBUG 2025-04-02 08:34:29.948 UTC: 	 Encoded data for curl request: subresource=download&objecttype=sandbox&tarballname=e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz&clientmethod=head_object
+DEBUG 2025-04-02 08:34:30.784 UTC: 	 PreSignedUrl to download sandbox received OK
+DEBUG 2025-04-02 08:34:30.787 UTC: 	 Will execute:
+ curl -v -s -f -o /dev/null --head  "https://s3.cern.ch/crabcache_prod/choij/sandboxes/e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz?AWSAccessKeyId=715203df6482458ba839e73e6dab634b&Signature=60R9b00vjhOy879txLm%2FpkgHMcM%3D&Expires=1743586470"
+DEBUG 2025-04-02 08:34:31.620 UTC: 	 exitcode: 0
+stdout: b''
+DEBUG 2025-04-02 08:34:31.620 UTC: 	 sandbox /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/42c5a86a-d7c6-4433-924c-8adcc1c89308default.tgz successfully uploaded to S3
+DEBUG 2025-04-02 08:34:31.620 UTC: 	 Loading required information from the environment
+DEBUG 2025-04-02 08:34:31.620 UTC: 	 Found CMSSW_13_0_13 for el8_amd64_gcc11 with base /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13
+DEBUG 2025-04-02 08:34:31.620 UTC: 	 Making tarball in /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/debugFiles.tgz
+DEBUG 2025-04-02 08:34:31.623 UTC: 	 Uploading archive /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/debugFiles.tgz (3 KB) to the CRAB cache. Using URI https://cmsweb.cern.ch/S3/crabcache_prod
+DEBUG 2025-04-02 08:34:31.624 UTC: 	 Encoded data for curl request: subresource=upload&objecttype=sandbox&tarballname=13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz
+DEBUG 2025-04-02 08:34:32.468 UTC: 	 Will execute:
+curl -f -v -X POST  -H "User-Agent: CRAB" -F "key=choij/sandboxes/13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz" -F "AWSAccessKeyId=715203df6482458ba839e73e6dab634b" -F "policy=eyJleHBpcmF0aW9uIjogIjIwMjUtMDQtMDJUMDk6MzQ6MzJaIiwgImNvbmRpdGlvbnMiOiBbeyJidWNrZXQiOiAiY3JhYmNhY2hlX3Byb2QifSwgeyJrZXkiOiAiY2hvaWovc2FuZGJveGVzLzEzZTRmMDBmODJhMjQzOTU5ZTQ2MDc1ZDBkMmE2MTYyYTEwYzY4OTlhOTE1OGI0MzRjZmEzMmQ0NTA2YWE2NDAudGFyLmd6In1dfQ==" -F "signature=RszN4ht7H3NPAGS6N9GIHKK8MRg=" -F "file=@/home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/debugFiles.tgz" "https://s3.cern.ch/crabcache_prod"
+DEBUG 2025-04-02 08:34:33.326 UTC: 	 exitcode: 0
+stdout: b''
+DEBUG 2025-04-02 08:34:33.326 UTC: 	 upload to S3 of sandbox /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/debugFiles.tgz completed
+DEBUG 2025-04-02 08:34:33.326 UTC: 	 make sure that object is ready for retrieve
+DEBUG 2025-04-02 08:34:34.327 UTC: 	 Encoded data for curl request: subresource=download&objecttype=sandbox&tarballname=13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz&clientmethod=head_object
+DEBUG 2025-04-02 08:34:35.163 UTC: 	 PreSignedUrl to download sandbox received OK
+DEBUG 2025-04-02 08:34:35.166 UTC: 	 Will execute:
+ curl -v -s -f -o /dev/null --head  "https://s3.cern.ch/crabcache_prod/choij/sandboxes/13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz?AWSAccessKeyId=715203df6482458ba839e73e6dab634b&Signature=C2EEOmZ1HPuu%2FlxpbYu9qwPkIRY%3D&Expires=1743586475"
+DEBUG 2025-04-02 08:34:35.984 UTC: 	 exitcode: 0
+stdout: b''
+DEBUG 2025-04-02 08:34:35.984 UTC: 	 sandbox /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/inputs/debugFiles.tgz successfully uploaded to S3
+DEBUG 2025-04-02 08:34:35.984 UTC: 	 Result uploading input files: e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz 
+DEBUG 2025-04-02 08:34:35.984 UTC: 	 submit() - self.configuration from WMCore.Configuration import Configuration
+config = Configuration()
+config.section_('General')
+config.General.workArea = 'crab_projects'
+config.General.requestName = 'W0j_LO_5f_FORTRAN'
+config.General.transferOutputs = True
+config.General.transferLogs = False
+config.section_('JobType')
+config.JobType.numCores = 1
+config.JobType.psetName = '../configs/Hadronizer_TuneCP5_13p6TeV_W0j_LO_5f_FORTRAN_LHE_pythia8_cfg.py'
+config.JobType.allowUndistributedCMSSW = False
+config.JobType.pluginName = 'PrivateMC'
+config.section_('Data')
+config.Data.publication = False
+config.Data.outputDatasetTag = 'Run3Summer23wmLHEGS'
+config.Data.outLFNDirBase = '/store/user/choij/CustomNanoGEN'
+config.Data.unitsPerJob = 5000
+config.Data.totalUnits = 200000
+config.Data.splitting = 'EventBased'
+config.Data.outputPrimaryDataset = 'Validation'
+config.section_('Site')
+config.Site.storageSite = 'T3_KR_KNU'
+config.section_('User')
+config.section_('Debug')
+
+DEBUG 2025-04-02 08:34:35.984 UTC: 	 submit() - self.configreq {'dryrun': 0, 'workflow': 'crab_W0j_LO_5f_FORTRAN', 'saveoutput': 1, 'savelogsflag': 0, 'primarydataset': 'Validation', 'nonvaliddata': 0, 'userfiles': [], 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'useparent': 0, 'ignorelocality': 0, 'splitalgo': 'EventBased', 'algoargs': 5000, 'totalunits': 200000, 'lfn': '/store/user/choij/CustomNanoGEN', 'publication': 0, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'publishname2': 'Run3Summer23wmLHEGS', 'jobtype': 'PrivateMC', 'generator': 'pythia', 'addoutputfiles': [], 'maxjobruntime': 1250, 'numcores': 1, 'maxmemory': 2000, 'priority': 10, 'nonprodsw': 0, 'asyncdest': 'T3_KR_KNU', 'requireaccelerator': 0, 'oneEventMode': 0, 'extrajdl': [], 'ignoreglobalblacklist': 0, 'partialdataset': 0, 'inputblocks': []}
+DEBUG 2025-04-02 08:34:35.985 UTC: 	 submit() - jobconfig {'addoutputfiles': [], 'tfileoutfiles': [], 'edmoutfiles': ['NANOGEN.root'], 'jobarch': 'el8_amd64_gcc11', 'jobminuarch': 'any', 'jobsw': 'CMSSW_13_0_13', 'cacheurl': 'https://cmsweb.cern.ch/S3/crabcache_prod', 'cachefilename': 'e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz', 'debugfilename': '13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz', 'jobtype': 'PrivateMC', 'primarydataset': 'Validation'}
+INFO 2025-04-02 08:34:35.985 UTC: 	 Sending the request to the server at cmsweb.cern.ch
+DEBUG 2025-04-02 08:34:35.985 UTC: 	 Submitting {'dryrun': 0, 'workflow': 'crab_W0j_LO_5f_FORTRAN', 'saveoutput': 1, 'savelogsflag': 0, 'primarydataset': 'Validation', 'nonvaliddata': 0, 'userfiles': [], 'dbsurl': 'https://cmsweb.cern.ch/dbs/prod/global/DBSReader', 'useparent': 0, 'ignorelocality': 0, 'splitalgo': 'EventBased', 'algoargs': 5000, 'totalunits': 200000, 'lfn': '/store/user/choij/CustomNanoGEN', 'publication': 0, 'publishdbsurl': 'https://cmsweb.cern.ch/dbs/prod/phys03/DBSWriter', 'publishname2': 'Run3Summer23wmLHEGS', 'jobtype': 'PrivateMC', 'generator': 'pythia', 'addoutputfiles': [], 'maxjobruntime': 1250, 'numcores': 1, 'maxmemory': 2000, 'priority': 10, 'nonprodsw': 0, 'asyncdest': 'T3_KR_KNU', 'requireaccelerator': 0, 'oneEventMode': 0, 'extrajdl': [], 'ignoreglobalblacklist': 0, 'partialdataset': 0, 'inputblocks': [], 'tfileoutfiles': [], 'edmoutfiles': ['NANOGEN.root'], 'jobarch': 'el8_amd64_gcc11', 'jobminuarch': 'any', 'jobsw': 'CMSSW_13_0_13', 'cacheurl': 'https://cmsweb.cern.ch/S3/crabcache_prod', 'cachefilename': 'e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz', 'debugfilename': '13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz'} 
+DEBUG 2025-04-02 08:34:35.985 UTC: 	 Encoded data for curl request: dryrun=0&workflow=crab_W0j_LO_5f_FORTRAN&saveoutput=1&savelogsflag=0&primarydataset=Validation&nonvaliddata=0&dbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fglobal%2FDBSReader&useparent=0&ignorelocality=0&splitalgo=EventBased&algoargs=5000&totalunits=200000&lfn=%2Fstore%2Fuser%2Fchoij%2FCustomNanoGEN&publication=0&publishdbsurl=https%3A%2F%2Fcmsweb.cern.ch%2Fdbs%2Fprod%2Fphys03%2FDBSWriter&publishname2=Run3Summer23wmLHEGS&jobtype=PrivateMC&generator=pythia&maxjobruntime=1250&numcores=1&maxmemory=2000&priority=10&nonprodsw=0&asyncdest=T3_KR_KNU&requireaccelerator=0&oneEventMode=0&ignoreglobalblacklist=0&partialdataset=0&jobarch=el8_amd64_gcc11&jobminuarch=any&jobsw=CMSSW_13_0_13&cacheurl=https%3A%2F%2Fcmsweb.cern.ch%2FS3%2Fcrabcache_prod&cachefilename=e9cb0b302898389a7790f2c12ef360ef48bb52b475ccfbb501a9e7793e3217ae.tar.gz&debugfilename=13e4f00f82a243959e46075d0d2a6162a10c6899a9158b434cfa32d4506aa640.tar.gz&edmoutfiles=NANOGEN.root
+DEBUG 2025-04-02 08:34:36.952 UTC: 	 Result: {'result': [{'RequestName': '250402_083436:choij_crab_W0j_LO_5f_FORTRAN'}]}
+INFO 2025-04-02 08:34:36.952 UTC: 	 Success: Your task has been delivered to the prod CRAB3 server.
+INFO 2025-04-02 08:34:36.952 UTC: 	 Task name: 250402_083436:choij_crab_W0j_LO_5f_FORTRAN
+INFO 2025-04-02 08:34:36.952 UTC: 	 Project dir: crab_projects/crab_W0j_LO_5f_FORTRAN
+INFO 2025-04-02 08:34:36.952 UTC: 	 Please use ' crab status -d crab_projects/crab_W0j_LO_5f_FORTRAN ' to check how the submission process proceeds.
+DEBUG 2025-04-02 08:34:36.952 UTC: 	 About to return
+INFO 2025-04-02 08:34:36.954 UTC: 	 Log file is /home/choij/workspace/CustomNanoGEN_CMSSW_13_0_13/src/Configuration/CustomNanoGEN/crab/crab_projects/crab_W0j_LO_5f_FORTRAN/crab.log
