@@ -12,14 +12,15 @@ config.JobType.psetName        = '../configs/Hadronizer_TuneCP5_13p6TeV_W2j_LO_5
 config.JobType.pluginName      = 'PrivateMC'
 config.JobType.allowUndistributedCMSSW = False
 config.JobType.numCores        = 1
+config.JobType.maxMemoryMB     = 5000
 
 ### Data configuration
-config.Data.outputPrimaryDataset = 'Validation'
+config.Data.outputPrimaryDataset = 'W2j_LO_5f_CPPAVX2'
 config.Data.splitting          = 'EventBased'
-config.Data.unitsPerJob        = 5000
+config.Data.unitsPerJob        = 4000
 NJOBS = 40
 config.Data.totalUnits         = config.Data.unitsPerJob * NJOBS
-config.Data.outLFNDirBase      = '/store/user/%s/CustomNanoGEN' % (getUsername())
+config.Data.outLFNDirBase      = '/store/user/%s/MG4GPU/Validation' % (getUsername())
 config.Data.publication        = False
 config.Data.outputDatasetTag   = 'Run3Summer23wmLHEGS'
 

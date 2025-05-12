@@ -18298,7 +18298,7 @@ process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService
     ),
     externalLHEProducer = cms.PSet(
         engineName = cms.untracked.string('MixMaxRng'),
-        initialSeed = cms.untracked.uint32(9)
+        initialSeed = cms.untracked.uint32(24)
     ),
     famosPileUp = cms.PSet(
         engineName = cms.untracked.string('MixMaxRng'),

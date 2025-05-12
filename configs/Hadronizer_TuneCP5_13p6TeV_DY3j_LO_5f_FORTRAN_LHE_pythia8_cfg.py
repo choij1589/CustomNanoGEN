@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/CustomNanoGEN/python/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_FORTRAN_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_FORTRAN_LHE_pythia8_cfg.py --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAOD --fileout file:NANOGEN.root --conditions 130X_mcRun3_2023_realistic_v14 --beamspot Realistic25ns13p6TeVEarly2023Collision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(8) process.source.numberEventsInLuminosityBlock=cms.untracked.uint32(243) --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3_2023 --no_exec --mc -n 5000
+# with command line options: Configuration/CustomNanoGEN/python/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_FORTRAN_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_FORTRAN_LHE_pythia8_cfg.py --eventcontent NANOAODGEN --customise Configuration/DataProcessing/Utils.addMonitoring --datatier NANOAOD --fileout file:NANOGEN.root --conditions 130X_mcRun3_2023_realistic_v14 --beamspot Realistic25ns13p6TeVEarly2023Collision --customise_commands process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(23) process.source.numberEventsInLuminosityBlock=cms.untracked.uint32(243) --step LHE,GEN,NANOGEN --geometry DB:Extended --era Run3_2023 --no_exec --mc -n 5000
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Run3_2023_cff import Run3_2023
@@ -213,7 +213,7 @@ process = addMonitoring(process)
 
 # Customisation from command line
 
-process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(8)
+process.RandomNumberGeneratorService.externalLHEProducer.initialSeed=int(23)
 # Add early deletion of temporary data products to reduce peak memory need
 from Configuration.StandardSequences.earlyDeleteSettings_cff import customiseEarlyDelete
 process = customiseEarlyDelete(process)

@@ -2,3 +2,5 @@
 */__init__.py*
 */__pycache__/*
 crab/*/crab_projects/*
+localTest/*
+crab/**
