@@ -54,9 +54,9 @@ I have put example gridpacks(DY+3j) in my afs area:
 ```bash
 /afs/cern.ch/work/c/choij/public/MG4GPU/gridpacks
 ```
-You can download them manually and set a path in your `externalLHEProducer` (no `file:` prefix) and use `scriptName` as `GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs_autodetect.sh`. 
-If you want to put the file in your EOS area and use xrootd, then you have to change your `scriptName` to `GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd_autodetect.sh`. Check `configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_AUTODETECT_LHE_pythia8_cfg.py` for more concrete example.
-
+There is two way to tell `externalLHEProducer` to fetch the gridpacks.
+1. using `run_generic_tarball_cvmfs_autodetect.sh` script. The script is originally designed to fetch the gridpacks from cvmfs, but it also works with local files. (No `file:` prefix)
+2. using `run_generic_tarball_xrootd_autodetect.sh` script. This is designed to fetch the gridpacks from xrootd, which is useful if you want to put the gridpack in your EOS area.
 
 ### Key Configuration
 
