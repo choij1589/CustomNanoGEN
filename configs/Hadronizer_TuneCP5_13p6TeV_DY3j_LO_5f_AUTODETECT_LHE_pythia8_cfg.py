@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_UPSTREAM_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_UPSTREAM_LHE_pythia8_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:GEN.root --mc --conditions auto:mc --step LHE,GEN -n 10000 --nThreads 8 --no_exec
+# with command line options: Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_AUTODETECT_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_AUTODETECT_LHE_pythia8_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:GEN.root --mc --conditions auto:mc --step LHE,GEN -n 10000 --nThreads 8 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -65,7 +65,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_UPSTREAM_LHE_pythia8_cff.py nevts:10000'),
+    annotation = cms.untracked.string('Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_AUTODETECT_LHE_pythia8_cff.py nevts:10000'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -170,7 +170,7 @@ process.generator = cms.EDFilter("Pythia8ConcurrentHadronizerFilter",
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring(
-        'root://eosuser.cern.ch//eos/user/c/choij/public/MG4GPU/gridpacks/validation/DY3j/DY3j_LO_5f_UPSTREAM_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz',
+        'root://eosuser.cern.ch//eos/user/c/choij/public/MG4GPU/gridpacks/validation/DY3j/DY3j_LO_5f_AUTODETECT_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz',
         '5000'
     ),
     generateConcurrently = cms.untracked.bool(False),

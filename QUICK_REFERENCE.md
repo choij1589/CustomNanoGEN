@@ -1,42 +1,6 @@
-# CustomNanoGEN
-## Installation
-To follow default configuration for Run3 NanoAODv12, CMSSW_13_0_13 release is required.
+# Quick Reference: CMSSW GEN with Auto-Detection
 
-```bash
-source /cvmfs/cms.cern.ch/cmsset_default.sh
-scram p CMSSW_13_0_13
-cd CMSSW_13_0_13/src
-cmsenv
-```
-
-Get the code snippet from CustomNanoGEN
-```bash
-cd $CMSSW_BASE/src
-mkdir -p Configuration
-git clone git@github.com:choij1589/CustomNanoGEN.git Configuration/CustomNanoGEN
-scram b clean; scram b -j 4
-```
-
-## How to make a config file
-In CMS, we use **fragment** to define the path to get the input gridpacks, and configure how to parse the output LHE files to Pythia8/Herwig7 to run parton shower and hadronization.
-Here is an example of generating a config file to run GEN step for DY+3j CUDA gridpacks.
-```bash
-cd $CMSSW_BASE/src/Configuration/CustomNanoGEN
-./scripts/runLocalCmsDriverGen.sh python/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cff.py 5000
-```
-
-This will generate a config file in `configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cfg.py`.
-To initiate the GEN step using this config file, run the following command:
-```bash
-cd $CMSSW_BASE/src/Configuration/CustomNanoGEN
-mkdir -p test && cd test
-cp ../configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cfg.py .
-cmsRun Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cfg.py
-```
-
-## Quick Reference: CMSSW GEN with Auto-Detection
-
-### Quick Start
+## Quick Start
 
 ```bash
 # 1. Setup environment
@@ -50,7 +14,7 @@ cmsDriver.py Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_A
 cmsRun Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_AUTODETECT_LHE_pythia8_cfg.py
 ```
 
-### Hardware Auto-Detection
+## Hardware Auto-Detection
 
 | Hardware | Backend | Performance | Auto-Selected When |
 |----------|---------|-------------|-------------------|
@@ -59,7 +23,7 @@ cmsRun Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_AUTODETECT_LHE_pythia8_cfg.py
 | AVX2 CPU | `_CPPAVX2_` | Medium | `avx2` in `/proc/cpuinfo` |
 | Basic CPU | `_LEGACY_` | Basic | Fallback |
 
-### Key Configuration
+## Key Configuration
 
 ```python
 externalLHEProducer = cms.EDProducer('ExternalLHEProducer',
@@ -72,7 +36,7 @@ externalLHEProducer = cms.EDProducer('ExternalLHEProducer',
 )
 ```
 
-### Threading Control
+## Threading Control
 
 ```python
 process.options = cms.untracked.PSet(
@@ -80,7 +44,7 @@ process.options = cms.untracked.PSet(
 )
 ```
 
-### Quick Debug
+## Quick Debug
 
 ```bash
 # Test hardware detection
@@ -92,7 +56,7 @@ nvidia-smi  # CUDA check
 grep 'flags' /proc/cpuinfo | grep -E 'avx|avx2|avx512'  # CPU check
 ```
 
-### Common Parameters
+## Common Parameters
 
 | Parameter | Old Value | New Value | Notes |
 |-----------|-----------|-----------|-------|
@@ -100,14 +64,14 @@ grep 'flags' /proc/cpuinfo | grep -E 'avx|avx2|avx512'  # CPU check
 | `numberOfParameters` | `1` | `2` | Updated count |
 | `runcmsgrid.sh` args | `$nevt $rnum $ncpu` | `$nevt $rnum $nproc $maxevt` | New interface |
 
-### Migration from Old Configs
+## Migration from Old Configs
 
 1. **Add maxevt parameter**: Add second element to `args` vector
 2. **Update numberOfParameters**: Change from `1` to `2`
 3. **Use AUTODETECT**: Replace backend name with `_AUTODETECT_` in gridpack path
 4. **Check threading**: Ensure `numberOfThreads` is set appropriately
 
-### Backend Performance Tips
+## Backend Performance Tips
 
 - **CUDA**: Use `numberOfThreads = 1-2`, larger `maxevt` values
 - **CPU vectorized**: Use `numberOfThreads = 4-8`, moderate `maxevt`
