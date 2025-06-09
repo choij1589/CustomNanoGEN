@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 externalLHEProducer = cms.EDProducer('ExternalLHEProducer',
-    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/MG4GPU/gridpacks/DY3j_LO_5f_LEGACY_el9_amd64_gcc12_CMSSW_14_0_9_tarball.tar.xz'),
+    args = cms.vstring('root://eosuser.cern.ch//eos/user/c/choij/public/MG4GPU/gridpacks/validation/DY3j/DY3j_LO_5f_LEGACY_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz'),
     nEvents = cms.untracked.uint32(5000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),

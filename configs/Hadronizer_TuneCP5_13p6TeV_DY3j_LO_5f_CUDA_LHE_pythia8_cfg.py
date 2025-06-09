@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:GEN.root --mc --conditions auto:mc --step LHE,GEN -n 100 --no_exec
+# with command line options: Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cff.py --python_filename configs/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cfg.py --eventcontent RAWSIM --customise Configuration/DataProcessing/Utils.addMonitoring --datatier GEN --fileout file:GEN.root --mc --conditions auto:mc --step LHE,GEN -n 10000 --nThreads 8 --no_exec
 import FWCore.ParameterSet.Config as cms
 
 
@@ -24,7 +24,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(100),
+    input = cms.untracked.int32(10000),
     output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
@@ -65,7 +65,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cff.py nevts:100'),
+    annotation = cms.untracked.string('Configuration/CustomNanoGEN/Hadronizer_TuneCP5_13p6TeV_DY3j_LO_5f_CUDA_LHE_pythia8_cff.py nevts:10000'),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -169,12 +169,15 @@ process.generator = cms.EDFilter("Pythia8ConcurrentHadronizerFilter",
 
 
 process.externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
-    args = cms.vstring('$PWD/DY3j_LO_5f_CUDA_el9_amd64_gcc12_CMSSW_14_0_9_tarball.tar.xz'),
+    args = cms.vstring(
+        'root://eosuser.cern.ch//eos/user/c/choij/public/MG4GPU/gridpacks/validation/DY3j/DY3j_LO_5f_CUDA_el9_amd64_gcc11_CMSSW_13_2_9_tarball.tar.xz',
+        '5000'
+    ),
     generateConcurrently = cms.untracked.bool(True),
-    nEvents = cms.untracked.uint32(100),
-    numberOfParameters = cms.uint32(1),
+    nEvents = cms.untracked.uint32(10000),
+    numberOfParameters = cms.uint32(2),
     outputFile = cms.string('cmsgrid_final.lhe'),
-    scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_cvmfs.sh')
+    scriptName = cms.FileInPath('GeneratorInterface/LHEInterface/data/run_generic_tarball_xrootd.sh')
 )
 
 
@@ -189,6 +192,10 @@ process.RAWSIMoutput_step = cms.EndPath(process.RAWSIMoutput)
 process.schedule = cms.Schedule(process.lhe_step,process.generation_step,process.genfiltersummary_step,process.endjob_step,process.RAWSIMoutput_step)
 from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
+
+#Setup FWK for multithreaded
+process.options.numberOfThreads = 8
+process.options.numberOfStreams = 0
 # filter all path with the production filter sequence
 for path in process.paths:
 	if path in ['lhe_step']: continue
